@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="Matrix.Api/Matrix.Api.csproj" />
+  <Project Path="Matrix.Application/Matrix.Application.csproj" />
+  <Project Path="Matrix.Domain/Matrix.Domain.csproj" />
+  <Project Path="Matrix.Dtos/Matrix.Dtos.csproj" />
+  <Project Path="Matrix.Infrastructure/Matrix.Infrastructure.csproj" />
+  <Project Path="Matrix.Shared/Matrix.Shared.csproj" />
+</Solution>

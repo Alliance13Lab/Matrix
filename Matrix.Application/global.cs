@@ -1,0 +1,10 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Text;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Configuration;
+global using Mapster;
+global using MapsterMapper;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.Extensions.Primitives;
+global using System.Security.Claims;
