@@ -1,5 +1,6 @@
 using Matrix.Application.Interfaces;
-using Matrix.Dtos;
+using Matrix.Domain.Entities;
+using Matrix.Dtos; 
 
 namespace Matrix.Api.Controllers;
 
@@ -36,7 +37,7 @@ public class UserController(IUserService _userService) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateUser(CreateUserDto createUserDto)
+    public async Task<IActionResult> CreateUser(User createUserDto)
     {
         try
         {
@@ -50,7 +51,7 @@ public class UserController(IUserService _userService) : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateUser(int id, UpdateUserDto updateUserDto)
+    public async Task<IActionResult> UpdateUser(int id, User updateUserDto)
     {
         try
         {

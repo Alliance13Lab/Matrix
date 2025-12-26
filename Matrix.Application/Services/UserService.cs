@@ -30,7 +30,7 @@ public class UserService(
         return result;
     }
 
-    public async Task<UserDto> CreateUserAsync(CreateUserDto createUserDto)
+    public async Task<UserDto> CreateUserAsync(User createUserDto)
     {
         if (await _userRepository.EmailExistsAsync(createUserDto.Email))
         {
@@ -44,7 +44,7 @@ public class UserService(
         return _mapper.Map<UserDto>(createdUser);
     }
 
-    public async Task UpdateUserAsync(int id, UpdateUserDto updateUserDto)
+    public async Task UpdateUserAsync(int id, User updateUserDto)
     {
         var user = await _userRepository.GetByIdAsync(id) ?? throw new ArgumentException("User not found");
         _mapper.Map(updateUserDto, user);
