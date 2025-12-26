@@ -38,7 +38,7 @@ public class UserService(
         }
 
         var user = _mapper.Map<User>(createUserDto);
-        user.Id = 0; // Temporary hardcoded value
+        user.Id = 4; // Temporary hardcoded value
         user.CreatedBy = _identityService.GetUserId();
         var createdUser = await _userRepository.AddAsync(user);
         return _mapper.Map<UserDto>(createdUser);
@@ -49,6 +49,7 @@ public class UserService(
         var user = await _userRepository.GetByIdAsync(id) ?? throw new ArgumentException("User not found");
         _mapper.Map(updateUserDto, user);
         user.UpdatedBy = _identityService.GetUserId();
+        user.Id = id;
         await _userRepository.UpdateAsync(user);
     }
 
