@@ -5,6 +5,8 @@ namespace Matrix.Infrastructure.Data;
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser, ApplicationRole, int>(options)
 {
     public DbSet<User> User => Set<User>();
+    public DbSet<Country> Country => Set<Country>();
+    public DbSet<State> State => Set<State>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
