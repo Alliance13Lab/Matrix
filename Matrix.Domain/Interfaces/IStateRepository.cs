@@ -5,5 +5,5 @@ namespace Matrix.Domain.Interfaces;
 
 public interface IStateRepository //: IRepository<State>
 {
-    Task<IEnumerable<State>> GetAllAsync();
+    Task<IEnumerable<State>> GetAllAsync(int id);
 }

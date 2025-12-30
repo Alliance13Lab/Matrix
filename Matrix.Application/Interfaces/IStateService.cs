@@ -6,5 +6,5 @@ namespace Matrix.Application.Interfaces;
 
 public interface IStateService
 {
-    Task<IEnumerable<State>> GetAllStatesAsync();
+    Task<IEnumerable<State>> GetAllStatesAsync(int countryid);
 }

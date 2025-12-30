@@ -9,10 +9,10 @@ namespace Matrix.Api.Controllers;
 [Route("api/[controller]")]
 public class StateController(IStateService _stateService) : ControllerBase
 {
-    [HttpGet]
-    public async Task<IActionResult> GetStates()
+    [HttpGet("{countryid}")]
+    public async Task<IActionResult> GetStates(int countryid)
     {
-        var states = await _stateService.GetAllStatesAsync();
+        var states = await _stateService.GetAllStatesAsync(countryid);
         return Ok(states);
     }
 }

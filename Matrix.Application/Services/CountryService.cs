@@ -13,10 +13,10 @@ public class CountryService(
 {
     public async Task<IEnumerable<Country>> GetAllCountryAsync()
     {
-        //var country = await _countryRepository.GetAllAsync();
-        //return _mapper.Map<IEnumerable<Country>>(country);
+        var country = await _countryRepository.GetAllAsync();
+        return _mapper.Map<IEnumerable<Country>>(country);
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
     public async Task<List<Country>> GetCountryAsync(CountryRequest request)
     {

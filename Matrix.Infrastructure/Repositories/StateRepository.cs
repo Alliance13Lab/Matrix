@@ -7,9 +7,11 @@ namespace Matrix.Infrastructure.Repositories;
 
 public class StateRepository(ApplicationDbContext _context) : IStateRepository
 {
-    public async Task<IEnumerable<State>> GetAllAsync()
+    public async Task<IEnumerable<State>> GetAllAsync(int countryid)
     {
-        return await _context.State.ToListAsync();
+        return await _context.State
+            .Where(s => s.CountryId == countryid)
+            .ToListAsync();
     }
 
     public Task<State> AddAsync(State entity)

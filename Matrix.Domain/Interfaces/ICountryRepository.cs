@@ -5,6 +5,9 @@ namespace Matrix.Domain.Interfaces;
 
 public interface ICountryRepository //: IRepository<Country>
 {
+    Task<List<Country>> GetAllAsync();
+    //Task<IEnumerable<State>> GetAllAsync();
+
     //Task<PagedResult<Country>> GetAllCountryAsync(int page, int pageSize, string sortColumn, string sortDirection);
     Task<List<Country>> GetCountryAsync(int page, int pageSize, string sortColumn, string sortDirection);
 }

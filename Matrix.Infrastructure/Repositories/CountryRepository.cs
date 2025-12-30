@@ -8,32 +8,15 @@ namespace Matrix.Infrastructure.Repositories;
 
 public class CountryRepository(ApplicationDbContext _context) : ICountryRepository
 {
-    public Task<Country> AddAsync(Country entity)
-    {
-        throw new NotImplementedException();
-    }
-    public Task DeleteAsync(Country entity)
-    {
-        throw new NotImplementedException();
-    }
-    public Task UpdateAsync(Country entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<Country> GetByIdAsync(int id)
-    {
-        throw new NotImplementedException();
-    }
-    //public async Task<Country> GetByIdAsync(int id)
+    //public async Task<IEnumerable<Country>> GetAllAsync()
     //{
-    //    return await _context.Country.FindAsync(id);
+    //    return await _context.Country.ToListAsync();
     //}
-
-    public async Task<IEnumerable<Country>> GetAllAsync()
+    public async Task<List<Country>> GetAllAsync()
     {
         return await _context.Country.ToListAsync();
     }
+
     public async Task<List<Country>> GetCountryAsync(int page, int pageSize, string sortColumn, string sortDirection)
     {
         //return await _context.Country
@@ -48,4 +31,21 @@ public class CountryRepository(ApplicationDbContext _context) : ICountryReposito
         return items;
     }
 
+
+    public Task<Country> AddAsync(Country entity)
+    {
+        throw new NotImplementedException();
+    }
+    public Task DeleteAsync(Country entity)
+    {
+        throw new NotImplementedException();
+    }
+    public Task UpdateAsync(Country entity)
+    {
+        throw new NotImplementedException();
+    }
+    public Task<Country> GetByIdAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

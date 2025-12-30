@@ -12,9 +12,9 @@ public class StateService(
     IIdentityService _identityService
     ) : IStateService
 {
-    public async Task<IEnumerable<State>> GetAllStatesAsync()
+    public async Task<IEnumerable<State>> GetAllStatesAsync(int countryid)
     {
-        var x = await _stateRepository.GetAllAsync();
+        var x = await _stateRepository.GetAllAsync(countryid);
         return _mapper.Map<IEnumerable<State>>(x);
 
         //throw new NotImplementedException();
