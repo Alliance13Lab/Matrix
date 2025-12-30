@@ -7,6 +7,8 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<User> User => Set<User>();
     public DbSet<Country> Country => Set<Country>();
     public DbSet<State> State => Set<State>();
+    public DbSet<City> City => Set<City>();
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
