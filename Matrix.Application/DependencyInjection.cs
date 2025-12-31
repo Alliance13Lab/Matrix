@@ -13,6 +13,8 @@ public static class DependencyInjection
         services.AddScoped<ICountryService, CountryService>();
         services.AddScoped<IStateService, StateService>();
         services.AddScoped<ICityService, CityService>();
+        services.AddScoped<IRoleService, RoleService>();
+        services.AddScoped<INavigationService, NavigationService>();
 
         // AutoMapper
         services.AddMapster();
