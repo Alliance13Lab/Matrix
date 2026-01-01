@@ -15,18 +15,20 @@ public class RoleRepository(ApplicationDbContext _context) : IRoleRepository
     {
         return await _context.Role.FindAsync(id).AsTask();
     }
-
-    public Task<Role> AddAsync(Role entity)
+    public async Task<Role> AddAsync(Role entity)
     {
-        throw new NotImplementedException();
+        _context.Role.Add(entity);
+        await _context.SaveChangesAsync();
+        return entity;
+    }
+    public async Task UpdateAsync(Role entity)
+    {
+        _context.Role.Update(entity);
+        await _context.SaveChangesAsync();
     }
     public async Task DeleteAsync(Role entity)
     {
         _context.Role.Remove(entity);
         await _context.SaveChangesAsync();
-    }
-    public Task UpdateAsync(Role entity)
-    {
-        throw new NotImplementedException();
     }
 }

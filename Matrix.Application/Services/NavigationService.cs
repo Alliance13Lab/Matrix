@@ -30,7 +30,6 @@ public class NavigationService(
         {
             var x = await _navigationRepository.GetByIdAsync(nav.Id) ?? throw new ArgumentException("Data not found");
             x.UpdatedBy = _identityService.GetUserId();
-            x.UpdatedBy = nav.UpdatedBy;
             x.NavigationId = nav.NavigationId;
             x.PNavigationId = nav.PNavigationId;
             x.Seq = nav.Seq;
