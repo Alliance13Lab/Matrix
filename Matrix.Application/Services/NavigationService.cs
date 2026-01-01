@@ -24,23 +24,26 @@ public class NavigationService(
             x = await _navigationRepository.GetAllAsync();
         return _mapper.Map<IEnumerable<Navigation>>(x);
     }
-    public async Task INUPNavigation(int id, Navigation nav)
+    public async Task INUPNavigation(Navigation nav)
     {
-        if (id > 0)
+        if (nav.Id > 0)
         {
-            var x = await _navigationRepository.GetByIdAsync(id) ?? throw new ArgumentException("Data not found");
+            var x = await _navigationRepository.GetByIdAsync(nav.Id) ?? throw new ArgumentException("Data not found");
             _mapper.Map(nav, x);
             x.UpdatedBy = _identityService.GetUserId();
-            x.Id = id;
             await _navigationRepository.UpdateAsync(x);
         }
         else
         {
             var x = _mapper.Map<Navigation>(nav);
-            //x.Id = 4; // Temporary hardcoded value
             x.CreatedBy = _identityService.GetUserId();
             var y = await _navigationRepository.AddAsync(x);
             _mapper.Map<Navigation>(y);
         }
+    }
+    public async Task DeleteNavigationAsync(int id)
+    {
+        var x = await _navigationRepository.GetByIdAsync(id) ?? throw new ArgumentException("Data not found");
+        await _navigationRepository.DeleteAsync(x);
     }
 }

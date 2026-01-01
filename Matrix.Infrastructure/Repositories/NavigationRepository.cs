@@ -16,22 +16,24 @@ public class NavigationRepository(ApplicationDbContext _context) : INavigationRe
         return await _context.Navigation.FindAsync(id).AsTask();
         //throw new NotImplementedException();
     }
-    //public Task<Navigation> GetByIdAsync(int id)
-    //{
-    //    return _context.Navigation.FindAsync(id).AsTask();
-    //    //throw new NotImplementedException();
-    //}
-
-    public Task<Navigation> AddAsync(Navigation entity)
+    public async Task<Navigation> AddAsync(Navigation entity)
     {
-        throw new NotImplementedException();
+        _context.Navigation.Add(entity);
+        await _context.SaveChangesAsync();
+        return entity;
+        //throw new NotImplementedException();
     }
-    public Task DeleteAsync(Navigation entity)
+    public async Task DeleteAsync(Navigation entity)
     {
-        throw new NotImplementedException();
+        _context.Navigation.Remove(entity);
+        await _context.SaveChangesAsync();
+        //throw new NotImplementedException();
     }
-    public Task UpdateAsync(Navigation entity)
+    public async Task UpdateAsync(Navigation entity)
     {
-        throw new NotImplementedException();
+        entity.UpdatedOn = DateTime.UtcNow;
+        _context.Navigation.Update(entity);
+        await _context.SaveChangesAsync();
+        //throw new NotImplementedException();
     }
 }

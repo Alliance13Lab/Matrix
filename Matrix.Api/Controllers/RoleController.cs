@@ -1,4 +1,5 @@
 ﻿using Matrix.Application.Interfaces;
+using Matrix.Application.Services;
 using Matrix.Domain.Entities;
 using Matrix.Dtos;
 
@@ -14,5 +15,18 @@ public class RoleController(IRoleService _roleService) : ControllerBase
     {
         var x = await _roleService.GetAllRoleAsync(id);
         return Ok(x);
+    }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteRole(int id)
+    {
+        try
+        {
+            await _roleService.DeleteRoleAsync(id);
+            return NoContent();
+        }
+        catch (ArgumentException ex)
+        {
+            return NotFound(ex.Message);
+        }
     }
 }

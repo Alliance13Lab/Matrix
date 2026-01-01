@@ -26,4 +26,9 @@ public class RoleService(
 
         //throw new NotImplementedException();
     }
+    public async Task DeleteRoleAsync(int id)
+    {
+        var x = await _roleRepository.GetByIdAsync(id) ?? throw new ArgumentException("Data not found");
+        await _roleRepository.DeleteAsync(x);
+    }
 }

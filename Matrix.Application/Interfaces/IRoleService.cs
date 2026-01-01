@@ -7,4 +7,5 @@ namespace Matrix.Application.Interfaces;
 public interface IRoleService
 {
     Task<IEnumerable<Role>> GetAllRoleAsync(int id);
+    Task DeleteRoleAsync(int id);
 }

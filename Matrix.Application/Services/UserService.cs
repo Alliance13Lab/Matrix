@@ -46,7 +46,7 @@ public class UserService(
 
     public async Task UpdateUserAsync(int id, User updateUserDto)
     {
-        var user = await _userRepository.GetByIdAsync(id) ?? throw new ArgumentException("User not found");
+        var user = await _userRepository.GetByIdAsync(id) ?? throw new ArgumentException("Data not found");
         _mapper.Map(updateUserDto, user);
         user.UpdatedBy = _identityService.GetUserId();
         user.Id = id;
@@ -55,7 +55,7 @@ public class UserService(
 
     public async Task DeleteUserAsync(int id)
     {
-        var user = await _userRepository.GetByIdAsync(id) ?? throw new ArgumentException("User not found");
+        var user = await _userRepository.GetByIdAsync(id) ?? throw new ArgumentException("Data not found");
         await _userRepository.DeleteAsync(user);
     }
 }

@@ -7,5 +7,6 @@ namespace Matrix.Application.Interfaces;
 public interface INavigationService
 {
     Task<IEnumerable<Navigation>> GetAllNavigationAsync(int id);
-    Task INUPNavigation(int id, Navigation nav);
+    Task INUPNavigation(Navigation nav);
+    Task DeleteNavigationAsync(int id);
 }

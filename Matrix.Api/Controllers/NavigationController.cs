@@ -16,14 +16,25 @@ public class NavigationController(INavigationService _navigationService) : Contr
         var x = await _navigationService.GetAllNavigationAsync(id);
         return Ok(x);
     }
-
     [HttpPost("INUPNavigation")]
     public async Task<IActionResult> INUPNavigation(Navigation nav)
     {
-        int id = 0;
         try
         {
-            await _navigationService.INUPNavigation(id, nav);
+            await _navigationService.INUPNavigation(nav);
+            return NoContent();
+        }
+        catch (ArgumentException ex)
+        {
+            return NotFound(ex.Message);
+        }
+    }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteNavigation(int id)
+    {
+        try
+        {
+            await _navigationService.DeleteNavigationAsync(id);
             return NoContent();
         }
         catch (ArgumentException ex)

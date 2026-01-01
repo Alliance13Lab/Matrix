@@ -1,4 +1,6 @@
 ﻿using Matrix.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Matrix.Infrastructure.Data;
 
@@ -15,6 +17,21 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.UseOpenIddict();
+
+        // Ensure DateTime and nullable DateTime properties map to SQL 'datetime2' to avoid conversion errors
+        foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+        {
+            var clrType = entityType.ClrType;
+            if (clrType == null) continue;
+
+            var dateProperties = clrType.GetProperties()
+                .Where(p => p.PropertyType == typeof(DateTime) || p.PropertyType == typeof(DateTime?));
+
+            foreach (var prop in dateProperties)
+            {
+                modelBuilder.Entity(clrType).Property(prop.Name).HasColumnType("datetime2");
+            }
+        }
     }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
