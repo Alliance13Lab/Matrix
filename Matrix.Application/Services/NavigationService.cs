@@ -29,9 +29,22 @@ public class NavigationService(
         if (nav.Id > 0)
         {
             var x = await _navigationRepository.GetByIdAsync(nav.Id) ?? throw new ArgumentException("Data not found");
-            _mapper.Map(nav, x);
             x.UpdatedBy = _identityService.GetUserId();
+            x.UpdatedBy = nav.UpdatedBy;
+            x.NavigationId = nav.NavigationId;
+            x.PNavigationId = nav.PNavigationId;
+            x.Seq = nav.Seq;
+            x.ModuleId = nav.ModuleId;
+            x.PageTitle = nav.PageTitle;
+            x.PageName = nav.PageName;
+            x.URL = nav.URL;
+            x.NewTab = nav.NewTab;
             await _navigationRepository.UpdateAsync(x);
+
+            //var x = await _navigationRepository.GetByIdAsync(nav.Id) ?? throw new ArgumentException("Data not found");
+            ////_mapper.Map(nav, x);
+            //x.UpdatedBy = _identityService.GetUserId();
+            //await _navigationRepository.UpdateAsync(x);
         }
         else
         {

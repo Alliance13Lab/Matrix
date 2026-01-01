@@ -13,7 +13,7 @@ public class NavigationRepository(ApplicationDbContext _context) : INavigationRe
     }
     public async Task<Navigation> GetByIdAsync(int id)
     {
-        return await _context.Navigation.FindAsync(id).AsTask();
+        return await _context.Navigation.FindAsync(id);
         //throw new NotImplementedException();
     }
     public async Task<Navigation> AddAsync(Navigation entity)

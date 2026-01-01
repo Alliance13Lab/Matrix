@@ -20,9 +20,10 @@ public class RoleRepository(ApplicationDbContext _context) : IRoleRepository
     {
         throw new NotImplementedException();
     }
-    public Task DeleteAsync(Role entity)
+    public async Task DeleteAsync(Role entity)
     {
-        throw new NotImplementedException();
+        _context.Role.Remove(entity);
+        await _context.SaveChangesAsync();
     }
     public Task UpdateAsync(Role entity)
     {
