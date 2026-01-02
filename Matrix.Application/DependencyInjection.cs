@@ -13,6 +13,7 @@ public static class DependencyInjection
         services.AddScoped<ICountryService, CountryService>();
         services.AddScoped<IStateService, StateService>();
         services.AddScoped<ICityService, CityService>();
+        services.AddScoped<IModuleService, ModuleService>();
         services.AddScoped<IRoleService, RoleService>();
         services.AddScoped<INavigationService, NavigationService>();
 
