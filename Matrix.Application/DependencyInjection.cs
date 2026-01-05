@@ -19,9 +19,6 @@ public static class DependencyInjection
 
         // AutoMapper
         services.AddMapster();
-        //services.AddSingleton(TypeAdapterConfig.GlobalSettings);
-        //services.AddScoped<IMapper, ServiceMapper>();
-
         return services;
     }
 }

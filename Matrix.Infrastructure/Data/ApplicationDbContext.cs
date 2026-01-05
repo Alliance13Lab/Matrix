@@ -11,6 +11,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<Module> Module => Set<Module>();
     public DbSet<Role> Role => Set<Role>();
     public DbSet<Navigation> Navigation => Set<Navigation>();
+    public DbSet<Rights> Rights => Set<Rights>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
