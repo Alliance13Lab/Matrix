@@ -15,6 +15,8 @@ public record CreateUserDto
     [Required]
     public int DesignationId { get; set; } = 0;
     [Required]
+    public int PositionId { get; set; } = 0;
+    [Required]
     public string FirstName { get; set; } = string.Empty;
     [Required]
     public string LastName { get; set; } = string.Empty;
@@ -30,6 +32,7 @@ public record CreateUserDto
     public string PersonalEmail { get; set; }
     [Required]
     public DateTime BirthDate { get; set; }
+    public string Password { get; set; }
     public DateTime PasswordUpdateDate { get; set; }
     public bool IsActive { get; set; }
     public bool IsDeleted { get; set; }

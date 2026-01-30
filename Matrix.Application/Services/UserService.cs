@@ -38,7 +38,7 @@ public class UserService(
         }
 
         var user = _mapper.Map<User>(createUserDto);
-        user.Id = 4; // Temporary hardcoded value
+        user.Id = 5; // Temporary hardcoded value
         user.CreatedBy = _identityService.GetUserId();
         var createdUser = await _userRepository.AddAsync(user);
         return _mapper.Map<UserDto>(createdUser);
